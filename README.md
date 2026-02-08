@@ -1,29 +1,38 @@
-#  Real Estate Assistant (Arabic RAG-Powered Search)  
+# 🏠 Real Estate Assistant (Arabic RAG-Powered Search)
 
-##  Overview  
-Traditional real estate platforms (like Nawy, Aqarmap, or dubizzle) often rely on complex, multi-step filtering systems. This can be a significant barrier for non-technical users, particularly older generations.
 
-This project introduces a "Google-style" natural language interface for real estate. Using Retrieval-Augmented Generation (RAG) and Vector Search, users can find their dream home by simply typing their requirements in plain Arabic or English, bypassing the need for tedious manual filters.
+## 🌟 Overview
+Traditional real estate platforms (like Nawy, Aqarmap, or Dubizzle) often rely on rigid, multi-step filtering systems. This creates a friction point for non-technical users and older generations who find complex UIs overwhelming.
 
-##  Key Features  
-Natural Language Search: No more checkboxes. Search for "Apartment in New Cairo under 5M with 3 bedrooms" directly.
+This project introduces a **"Google-style" natural language interface** for real estate. By leveraging **Retrieval-Augmented Generation (RAG)** and **Vector Search**, users can find their dream home by simply describing it in plain Arabic or English—bypassing tedious checkboxes and manual filters.
 
-Multi-Language Support: Optimized for Arabic queries to serve the local Egyptian/MENA market.
 
-Smart Matching & Alternatives: If an exact match doesn't exist, it retrieves the 2–3 closest alternatives.
+## 🚀 Live Demo
+You can interact with the live application here:
+👉 **[Launch Real Estate AI Assistant](https://real-estate-ai-assistant-ptmjeyufburhgeanwkvemv.streamlit.app/)**
 
-Automated Comparison: The LLM provides a side-by-side feature comparison of suggested units to help users make informed decisions.
 
-Live Data Sync: Seamlessly integrates with Airtable.
+## ✨ Key Features
+* **Natural Language Search:** Move beyond checkboxes. Type *"Apartment in New Cairo under 5M with 3 bedrooms"* and get instant results.
+* **Bilingual Optimization:** Advanced support for Arabic and English queries, specifically tuned for the Egyptian/MENA market nuances.
+* **Semantic Matching:** If an exact match isn't found, the system utilizes vector similarity to suggest the 2–3 closest alternatives.
+* **AI-Powered Comparisons:** The LLM provides a side-by-side feature analysis to assist in decision-making.
+* **Live Data Pipeline:** Seamlessly integrates with **Airtable** to ensure listings are always up-to-date.
 
-## 🛠️ Tech Stack  
-LLM Framework: LangChain / OpenAI
+## 🛠️ Tech Stack
+* **Backend:** FastAPI (Python)
+* **LLM Framework:** LangChain / OpenAI (GPT-4o)
+* **Vector Database:** MongoDB Atlas Vector Search
+* **Embeddings:** OpenAI 
+* **Data Source:** Airtable API
+* **Hosting:** Render
+* **Frontend:** Streamlit
 
-Vector Database: MongoDB Atlas Vector Search
+## 🏗️ Architecture & Workflow
+The application follows a modular RAG architecture designed for speed and scalability:
 
-Data Source: Airtable API
+1.  **Ingestion (`/sync`):** Property data is fetched from Airtable, vectorized, and stored in **MongoDB Atlas**.
+2.  **Retrieval (`/chat`):** When a user types a query, the **FastAPI** backend performs a semantic search to find listings that match the *intent*, not just keywords.
+3.  **Augmentation:** The top matches are retrieved and fed into the LLM as context.
+4.  **Generation:** The LLM generates a natural response in Arabic or English, explaining why these units match the user's specific lifestyle requirements.
 
-Embeddings:  OpenAI text-embedding-3-small 
-
-Try the Live Demo: 
-https://xweuxdkzfqcbxfoeawkwte.streamlit.app/
