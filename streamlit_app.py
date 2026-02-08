@@ -11,7 +11,7 @@ import os
 # CONFIGURATION & API CONNECTIVITY
 # ===================================================================
 
-API_BASE_URL = os.getenv("API_URL", "http://localhost:8000")
+API_BASE_URL = st.secrets("API_URL", "http://localhost:8000")
 
 # ===================================================================
 # STREAMLIT UI
@@ -114,4 +114,5 @@ def main():
             st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 if __name__ == "__main__":
+
     main()
