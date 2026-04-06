@@ -51,21 +51,6 @@ def main():
 
     st.title("🏠 مساعد مدينتي العقاري")
 
-    # Sidebar Admin
-    with st.sidebar:
-        st.header("لوحة التحكم")
-        if st.button("🔄 تحديث البيانات من Airtable"):
-            with st.spinner("جاري تحديث قاعدة البيانات..."):
-                try:
-                    # Calling the FastAPI /sync endpoint
-                    response = requests.post(f"{API_BASE_URL}/sync")
-                    if response.status_code == 200:
-                        st.success("تم التحديث بنجاح!")
-                    else:
-                        st.error(f"فشل التحديث: {response.text}")
-                except Exception as e:
-                    st.error(f"تعذر الاتصال بالسيرفر: {e}")
-
     # Chat Interface Logic
     if "messages" not in st.session_state:
         st.session_state.messages = []
