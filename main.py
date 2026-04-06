@@ -55,18 +55,3 @@ async def chat_endpoint(request : ChatRequest) -> StreamingResponse:
         raise HTTPException(status_code=500, detail=f"Chat Error: {str(e)}")
     
 
-@app.post("/sync")
-async def sync_database() -> dict:
-    """
-    Triggers the synchronization between Airtable and MongoDB.
-
-    Returns:
-        dict: Success message or failure details.
-    """
-    try:
-        success = DatabaseManager.sync_airtable_to_mongodb()
-        if success:
-            return {"status": "success", "message": "Database synced successfully"}
-        return {"status": "warning", "message": "Sync completed but no records were processed"}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Sync Error: {str(e)}")
