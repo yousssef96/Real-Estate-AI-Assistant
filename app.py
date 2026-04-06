@@ -97,7 +97,7 @@ class DatabaseManager:
             _, embeddings = AIMANAGER.initialize_models()
 
             client = DatabaseManager._get_client()
-            db = client["RealEstate_RAG_OpenAI"]
+            db = client["RealEstate_RAG"]
             collection = db["available_units"]
 
             return MongoDBAtlasVectorSearch(
