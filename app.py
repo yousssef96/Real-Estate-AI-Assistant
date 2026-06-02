@@ -17,7 +17,7 @@ from langchain_community.vectorstores import MongoDBAtlasVectorSearch
 class Config:
     # Removed Airtable configurations
     URI = os.getenv("MONGODB_URI")
-    CERTIFICATE_PATHWAY = "/etc/secrets/mad_cert.pem"
+    CERTIFICATE_PATHWAY = "/etc/secrets/X509-cert-298079464060441217.pem"
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     ENDPOINT = "https://models.github.ai/inference"
     MODEL_NAME = "gpt-4o"
